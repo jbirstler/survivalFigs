@@ -9,19 +9,6 @@ You can install the latest development version from github:
 devtools::install_github("jbirstler/survivalFigs")
 ```
 
-By default, vignettes are not created. If you’d like to view vignettes,
-install with:
-
-``` r
-devtools::install_github("jbirstler/survivalFigs", build_vignettes = TRUE)
-```
-
-To learn more about `survivalFigs`, start with the vignette:
-
-``` r
-browseVignettes("survivalFigs")
-```
-
 ## Basic Usage
 
 The main user functions in this package are:
