@@ -60,7 +60,7 @@ makeNumRiskFig <- function(formula, data, timepts, colors) {
       panel.grid = element_blank(), panel.border = element_blank(),
       axis.title.y = element_blank(), axis.title.x = element_text(size = 9), axis.ticks = element_blank(), axis.text.x = element_blank()
     ) +
-    scale_x_continuous(breaks = timepts, limits = c(0, max(timepts))) +
+    scale_x_continuous(breaks = timepts, limits = c(0, max(ggdf$time))) +
     scale_y_continuous(trans = "reverse", expand = c(
       0,
       0.5

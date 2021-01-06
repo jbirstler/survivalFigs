@@ -41,7 +41,7 @@ makeKMFig <- function(formula, data, timepts, colors, ribbon = FALSE) {
       legend.key.height = unit(0.4, "cm"), panel.border = element_blank(), axis.line = element_line(), panel.grid = element_blank()
     ) +
     scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
-    scale_x_continuous(breaks = timepts, limits = c(0, max(timepts))) +
+    scale_x_continuous(breaks = timepts, limits = c(0, max(ggdf$time))) +
     labs(y = "Survival probability", x = "Days", color = "Group", fill = "Group")
   if (ribbon) {
     gg1 <- gg1 + pammtools::geom_stepribbon(alpha = 0.2, aes(fill = .data$group))
