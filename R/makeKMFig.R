@@ -19,10 +19,10 @@
 #' makeKMFig(formula = survival::Surv(stime, scens) ~ treatment, data = mice) +
 #'   ggplot2::labs(y = "OS", color = "Treatment")
 #'
-#' makeKMFig(formula = survival::Surv(stime, scens) ~ treatment, data = mice, ribbon = TRUE) +
+#' makeKMFig(formula = survival::Surv(stime, scens) ~ treatment, data = mice, ribbon = FALSE) +
 #'   ggplot2::scale_color_brewer(palette = "Set1") +
 #'   ggplot2::scale_fill_brewer(palette = "Set1")
-makeKMFig <- function(formula, data, timepts = NULL, colors = NULL, ribbon = FALSE) {
+makeKMFig <- function(formula, data, timepts = NULL, colors = NULL, ribbon = TRUE) {
   ggdf <- makeKMdf(formula = formula, data = data)
 
   if (is.null(timepts)) {

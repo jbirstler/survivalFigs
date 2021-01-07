@@ -4,7 +4,7 @@
 \alias{makeKMFig}
 \title{Make a survival curve figure as a ggplot2 object}
 \usage{
-makeKMFig(formula, data, timepts = NULL, colors = NULL, ribbon = FALSE)
+makeKMFig(formula, data, timepts = NULL, colors = NULL, ribbon = TRUE)
 }
 \arguments{
 \item{formula}{A formula object, which must have a `Surv` object as the response on the left of the `~` operator and the grouping term (often the treatment) on the right.}
@@ -29,7 +29,7 @@ makeKMFig(formula = survival::Surv(stime, scens) ~ treatment, data = mice)
 makeKMFig(formula = survival::Surv(stime, scens) ~ treatment, data = mice) +
   ggplot2::labs(y = "OS", color = "Treatment")
 
-makeKMFig(formula = survival::Surv(stime, scens) ~ treatment, data = mice, ribbon = TRUE) +
+makeKMFig(formula = survival::Surv(stime, scens) ~ treatment, data = mice, ribbon = FALSE) +
   ggplot2::scale_color_brewer(palette = "Set1") +
   ggplot2::scale_fill_brewer(palette = "Set1")
 }

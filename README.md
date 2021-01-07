@@ -38,13 +38,13 @@ combineSurvFigs(topFigureEx1, bottomChartEx1)
 ## timepts, colors, and ribbon
 
 Custom `timepts` along the x-axis and `colors` for KM curves or chart
-text can be specified in arguments. An optional confidence band `ribbon`
-can be displayed.
+text can be specified in arguments. The confidence band `ribbon` can be
+removed.
 
 ``` r
 topFigureEx2 <- makeKMFig(
   formula = survival::Surv(stime, scens) ~ treatment,
-  data = mice, ribbon = TRUE,
+  data = mice, ribbon = FALSE,
   colors = c("black", RColorBrewer::brewer.pal(3, "Set1")),
   timepts = seq(from = 0, to = max(mice$stime), by = 15)
 )
@@ -69,7 +69,7 @@ with `combineSurvFigs()`.
 ``` r
 library(ggplot2)
 makeKMFig(formula = survival::Surv(stime, scens) ~ treatment,
-          data = mice, ribbon = TRUE) +
+          data = mice) +
   labs(x = "Survival time (days)") +
   theme(legend.position = c(0.1, 0.2),
         legend.background = element_rect(color = "black"),

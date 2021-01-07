@@ -9,7 +9,7 @@ quickSurvFig(
   data,
   timepts = NULL,
   colors = NULL,
-  ribbon = FALSE,
+  ribbon = TRUE,
   heights = c(2.5, 1)
 )
 }
@@ -38,7 +38,7 @@ quickSurvFig(survival::Surv(stime, scens) ~ treatment,
   data = mice,
   timepts = c(30, 45, 60, 75, 90),
   colors = c("black", "blue", "red", "green"),
-  ribbon = TRUE,
+  ribbon = FALSE,
   heights = c(4, 1)
 )
 }
