@@ -50,8 +50,9 @@ makeNumRiskFig <- function(formula, data, timepts = NULL, colors = NULL) {
     slice(sapply(timepts, function(x) {
       which.max(ifelse(.data$time > x, -Inf, .data$time - x))
     })) %>%
-    mutate(time = timepts, label = paste0(.data$n.risk - .data$n.event)) %>%
-    ungroup()
+    mutate(time = timepts) %>%
+    ungroup
+  tabdf$label <- tabdf$n.risk - tabdf$n.event
 
   gg1 <- ggplot(data = tabdf, aes(x = .data$time, y = as.numeric(.data$group), label = .data$label, color = .data$group)) +
     geom_text(size = 3, show.legend = FALSE) +

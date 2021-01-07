@@ -17,11 +17,10 @@
 #' makeKMFig(formula = survival::Surv(stime, scens) ~ treatment, data = mice)
 #'
 #' makeKMFig(formula = survival::Surv(stime, scens) ~ treatment, data = mice) +
-#'   ggplot2::labs(y = "OS", color = "Treatment")
+#'   ggplot2::labs(y = "OS", color = "Treatment", fill = "Treatment")
 #'
 #' makeKMFig(formula = survival::Surv(stime, scens) ~ treatment, data = mice, ribbon = FALSE) +
-#'   ggplot2::scale_color_brewer(palette = "Set1") +
-#'   ggplot2::scale_fill_brewer(palette = "Set1")
+#'   ggplot2::scale_color_brewer(palette = "Set1")
 makeKMFig <- function(formula, data, timepts = NULL, colors = NULL, ribbon = TRUE) {
   ggdf <- makeKMdf(formula = formula, data = data)
 
@@ -42,7 +41,7 @@ makeKMFig <- function(formula, data, timepts = NULL, colors = NULL, ribbon = TRU
     ) +
     scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
     scale_x_continuous(breaks = timepts, limits = c(0, max(ggdf$time))) +
-    labs(y = "Survival probability", x = "Time", color = "Strata", fill = "Strata")
+    labs(y = "Survival probability", x = "Time", color = as.character(formula[3]), fill = as.character(formula[3]))
   if (ribbon) {
     gg1 <- gg1 + pammtools::geom_stepribbon(alpha = 0.2, aes(fill = .data$group))
   }
