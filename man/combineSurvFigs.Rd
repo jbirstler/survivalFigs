@@ -34,4 +34,6 @@ bottomChart <- makeNumRiskFig(
   data = mice
 )
 combineSurvFigs(topFigure, bottomChart)
+combineSurvFigs(topFigure, bottomChart, heights = c(4, 1))
+combineSurvFigs(topFigure, bottomChart, heights = c(1, 0.4))
 }

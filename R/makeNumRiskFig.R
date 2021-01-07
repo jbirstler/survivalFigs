@@ -33,14 +33,14 @@
 #'   timepts = c(30, 45, 60, 75, 90),
 #'   colors = c("black", "blue", "red", "green")
 #' )
-makeNumRiskFig <- function(formula, data, timepts, colors) {
+makeNumRiskFig <- function(formula, data, timepts = NULL, colors = NULL) {
   ggdf <- makeKMdf(formula = formula, data = data)
 
-  if (missing(timepts)) {
+  if (is.null(timepts)) {
     timepts <- round(seq(from = 0, to = max(ggdf$time), length.out = 10))
   }
 
-  if (!missing(colors)) {
+  if (!is.null(colors)) {
     stopifnot(length(colors) == length(unique(ggdf$group)))
   }
 
@@ -67,7 +67,7 @@ makeNumRiskFig <- function(formula, data, timepts, colors) {
     ), breaks = 1:length(levels(tabdf$group)), labels = levels(tabdf$group)) +
     labs(x = "Number at risk")
 
-  if (!missing(colors)) {
+  if (!is.null(colors)) {
     gg1 <- gg1 + scale_color_manual(values = colors, limits = sort(unique(ggdf$group)))
   }
   gg1

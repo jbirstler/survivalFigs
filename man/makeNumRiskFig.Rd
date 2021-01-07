@@ -4,7 +4,7 @@
 \alias{makeNumRiskFig}
 \title{Make a chart of number at risk as a ggplot2 figure}
 \usage{
-makeNumRiskFig(formula, data, timepts, colors)
+makeNumRiskFig(formula, data, timepts = NULL, colors = NULL)
 }
 \arguments{
 \item{formula}{A formula object, which must have a `Surv` object as the response on the left of the `~` operator and the grouping term (often the treatment) on the right.}

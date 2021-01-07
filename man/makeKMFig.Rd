@@ -4,7 +4,7 @@
 \alias{makeKMFig}
 \title{Make a survival curve figure as a ggplot2 object}
 \usage{
-makeKMFig(formula, data, timepts, colors, ribbon = FALSE)
+makeKMFig(formula, data, timepts = NULL, colors = NULL, ribbon = FALSE)
 }
 \arguments{
 \item{formula}{A formula object, which must have a `Surv` object as the response on the left of the `~` operator and the grouping term (often the treatment) on the right.}

@@ -27,6 +27,8 @@
 #'   data = mice
 #' )
 #' combineSurvFigs(topFigure, bottomChart)
+#' combineSurvFigs(topFigure, bottomChart, heights = c(4, 1))
+#' combineSurvFigs(topFigure, bottomChart, heights = c(1, 0.4))
 combineSurvFigs <- function(KMFig, NumRiskFig, heights = c(2.5, 1)) {
   ggg1 <- ggplotGrob(KMFig)
   ggg2 <- ggplotGrob(NumRiskFig)

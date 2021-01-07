@@ -22,13 +22,13 @@
 #' makeKMFig(formula = survival::Surv(stime, scens) ~ treatment, data = mice, ribbon = TRUE) +
 #'   ggplot2::scale_color_brewer(palette = "Set1") +
 #'   ggplot2::scale_fill_brewer(palette = "Set1")
-makeKMFig <- function(formula, data, timepts, colors, ribbon = FALSE) {
+makeKMFig <- function(formula, data, timepts = NULL, colors = NULL, ribbon = FALSE) {
   ggdf <- makeKMdf(formula = formula, data = data)
 
-  if (missing(timepts)) {
+  if (is.null(timepts)) {
     timepts <- round(seq(from = 0, to = max(ggdf$time), length.out = 10))
   }
-  if (!missing(colors)) {
+  if (!is.null(colors)) {
     stopifnot(length(colors) == length(unique(ggdf$group)))
   }
 
@@ -42,11 +42,11 @@ makeKMFig <- function(formula, data, timepts, colors, ribbon = FALSE) {
     ) +
     scale_y_continuous(labels = scales::percent, limits = c(0, 1)) +
     scale_x_continuous(breaks = timepts, limits = c(0, max(ggdf$time))) +
-    labs(y = "Survival probability", x = "Days", color = "Group", fill = "Group")
+    labs(y = "Survival probability", x = "Time", color = "Strata", fill = "Strata")
   if (ribbon) {
     gg1 <- gg1 + pammtools::geom_stepribbon(alpha = 0.2, aes(fill = .data$group))
   }
-  if (!missing(colors)) {
+  if (!is.null(colors)) {
     gg1 <- gg1 + scale_color_manual(values = colors, limits = sort(unique(ggdf$group))) + scale_fill_manual(
       values = colors,
       limits = sort(unique(ggdf$group))
